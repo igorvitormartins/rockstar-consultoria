@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rockstar – Consultoria, Treinamentos e Soluções</title>
+<meta name="description" content="Processos, pessoas e tecnologia para a sua operação render mais. Consultoria, treinamentos e soluções em engenharia, gestão, segurança do trabalho, dados e IA.">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="assets/logo.png">
+<style>
+#preloader{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:#080606;opacity:1;transition:opacity .7s ease,visibility .7s}
+#preloader img{width:min(260px,60vw);height:auto;opacity:0;animation:preFade 1.8s ease-in-out infinite}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+html.is-loading,html.is-loading body{overflow:hidden}
+@keyframes preFade{0%,100%{opacity:.15}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){#preloader img{animation:none;opacity:1}}
+</style>
+<noscript><style>#preloader{display:none}html.is-loading,html.is-loading body{overflow:auto}</style></noscript>
+<script>document.documentElement.classList.add('is-loading')</script>
+</head>
+<body>
+
+<div id="preloader" aria-hidden="true"><img src="assets/logo.png" alt="" width="928" height="240"></div>
+<script>
+(function(){
+  var start=Date.now(), MIN=1800, p=document.getElementById('preloader');
+  function hide(){
+    p.classList.add('done');
+    document.documentElement.classList.remove('is-loading');
+    setTimeout(function(){p.remove()},900);
+  }
+  function ready(){setTimeout(hide,Math.max(0,MIN-(Date.now()-start)))}
+  if(document.readyState==='complete')ready();else window.addEventListener('load',ready);
+  setTimeout(hide,6000); // segurança: nunca prende o usuário
+})();
+</script>
+
+<!-- SVG sprite de ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a800"/><stop offset="1" stop-color="#ff4d1a"/></linearGradient>
+    <symbol id="i-eng" viewBox="0 0 48 48"><path d="M6 40V18l18-10 18 10v22M6 40h36M16 40V26h8v14M30 24h6v6h-6z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 48 48"><rect x="12" y="12" width="24" height="24" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M18 20h12M18 28h12M24 4v8M24 36v8M4 24h8M36 24h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="24" r="3" fill="currentColor"/></symbol>
+    <symbol id="i-flow" viewBox="0 0 48 48"><circle cx="10" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="38" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="10" cy="36" r="5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15 12h8c6 0 6 12 10 12M15 36h8c6 0 6-12 10-12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 5l15 6v11c0 10-6 17-15 21C15 39 9 32 9 22V11z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M17 24l5 5 9-10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 48 48"><path d="M3 18l21-10 21 10-21 10z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M12 23v10c0 3 6 6 12 6s12-3 12-6V23M45 18v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-data" viewBox="0 0 48 48"><path d="M7 41V7M7 41h36" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><rect x="14" y="26" width="6" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="24" y="16" width="6" height="21" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/><rect x="34" y="9" width="6" height="28" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 8.5c0 3.5 3.5 7 7 7l1.3-1.6-2.2-1-1 .7c-1-.4-2-1.4-2.4-2.4l.7-1-1-2.2z" fill="currentColor"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.800 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="logo" aria-label="Rockstar – Consultoria, Treinamentos e Soluções"><img src="assets/logo.png" alt="Rockstar Consultoria, Treinamentos e Soluções" width="928" height="240"></a>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#treinamentos">Treinamentos</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="btn btn-sm menu-cta">Falar com a equipe</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      <button class="lang-btn on" data-lang="pt" aria-pressed="true" title="Português">PT</button>
+      <button class="lang-btn" data-lang="en" aria-pressed="false" title="English">EN</button>
+      <button class="lang-btn" data-lang="es" aria-pressed="false" title="Español">ES</button>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true"><img src="assets/treino-1.jpg" alt="" fetchpriority="high"></div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-in">
+    <div class="hero-text">
+      <span class="pill reveal"><i class="dot"></i> Processos em Performance</span>
+      <h1 class="reveal">Processos, pessoas e tecnologia para a sua <span class="grad">operação render mais</span></h1>
+      <p class="lead reveal">Consultoria, treinamentos e soluções em engenharia, gestão de processos, segurança do trabalho, dados e inteligência artificial. Conhecimento técnico, experiência prática e foco em resultado. <strong>Menos teoria. Mais resultado.</strong></p>
+      <div class="hero-cta reveal">
+        <a href="#treinamentos" class="btn">Ver treinamentos <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a href="#contato" class="btn btn-ghost">Pedir proposta</a>
+      </div>
+      <ul class="chips reveal">
+        <li><svg class="ic"><use href="#i-check"/></svg> Presencial e online</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Instrutores que atuam no mercado</li>
+        <li><svg class="ic"><use href="#i-check"/></svg> Mão na massa</li>
+      </ul>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <svg viewBox="-10 -10 540 540" class="orbit" overflow="visible">
+        <defs>
+          <radialGradient id="core" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff4d1a" stop-opacity=".9"/><stop offset="1" stop-color="#f5a800" stop-opacity="0"/></radialGradient>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5a800"/><stop offset="1" stop-color="#ff4d1a" stop-opacity=".2"/></linearGradient>
+        </defs>
+        <circle cx="260" cy="260" r="150" fill="url(#core)"/>
+        <g fill="none" stroke="url(#ring)" stroke-width="1.2">
+          <circle cx="260" cy="260" r="80"/>
+          <circle cx="260" cy="260" r="140" stroke-dasharray="4 8"/>
+          <circle cx="260" cy="260" r="200"/>
+        </g>
+        <g class="spin-a"><circle cx="260" cy="60" r="7" fill="#f5a800"/><circle cx="260" cy="460" r="4" fill="#ff4d1a"/></g>
+        <g class="spin-b"><circle cx="120" cy="260" r="6" fill="#ff4d1a"/><circle cx="400" cy="260" r="4" fill="#f5a800"/></g>
+        <g class="spin-c"><circle cx="260" cy="120" r="5" fill="#fff"/></g>
+        <g class="node-grp">
+          <g class="orb" data-r="200" data-a="-90" data-s="9" transform="translate(260 260)"><g class="node "><a href="#servicos" class="eln" aria-label="Engenharia e Serviços"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#f5a800" stroke-opacity=".6"/><use href="#i-eng" x="-14" y="-14" width="28" height="28" color="#f5a800"/></g><g class="lab"><rect x="-38.0" y="36" width="76" height="24" rx="4" fill="#0c0909" stroke="#f5a800"/><text y="52" text-anchor="middle">Serviços</text></g></a></g></g>
+          <g class="orb" data-r="140" data-a="-30" data-s="-13" transform="translate(260 260)"><g class="node n2"><a href="#recursos" class="eln" aria-label="Materiais e IA"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#ff4d1a" stroke-opacity=".6"/><use href="#i-ai" x="-14" y="-14" width="28" height="28" color="#ff4d1a"/></g><g class="lab"><rect x="-38.0" y="36" width="76" height="24" rx="4" fill="#0c0909" stroke="#ff4d1a"/><text y="52" text-anchor="middle">Recursos</text></g></a></g></g>
+          <g class="orb" data-r="200" data-a="30" data-s="9" transform="translate(260 260)"><g class="node n3"><a href="#cases" class="eln" aria-label="Cases e experiência"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#f5a800" stroke-opacity=".6"/><use href="#i-data" x="-14" y="-14" width="28" height="28" color="#f5a800"/></g><g class="lab"><rect x="-31.0" y="36" width="62" height="24" rx="4" fill="#0c0909" stroke="#f5a800"/><text y="52" text-anchor="middle">Cases</text></g></a></g></g>
+          <g class="orb" data-r="140" data-a="90" data-s="-13" transform="translate(260 260)"><g class="node n4"><a href="#diferenciais" class="eln" aria-label="Diferenciais"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#ff4d1a" stroke-opacity=".6"/><use href="#i-shield" x="-14" y="-14" width="28" height="28" color="#ff4d1a"/></g><g class="lab"><rect x="-48.0" y="-60" width="96" height="24" rx="4" fill="#0c0909" stroke="#ff4d1a"/><text y="-44" text-anchor="middle">Diferenciais</text></g></a></g></g>
+          <g class="orb" data-r="200" data-a="150" data-s="9" transform="translate(260 260)"><g class="node n5"><a href="#metodologia" class="eln" aria-label="Metodologia"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#f5a800" stroke-opacity=".6"/><use href="#i-flow" x="-14" y="-14" width="28" height="28" color="#f5a800"/></g><g class="lab"><rect x="-50.0" y="36" width="100" height="24" rx="4" fill="#0c0909" stroke="#f5a800"/><text y="52" text-anchor="middle">Metodologia</text></g></a></g></g>
+          <g class="orb" data-r="140" data-a="210" data-s="-13" transform="translate(260 260)"><g class="node n6"><a href="#treinamentos" class="eln" aria-label="Treinamentos"><g class="hit"><circle r="34" fill="transparent"/><circle class="bg" r="26" fill="#161110" stroke="#ff4d1a" stroke-opacity=".6"/><use href="#i-cap" x="-14" y="-14" width="28" height="28" color="#ff4d1a"/></g><g class="lab"><rect x="-52.0" y="36" width="104" height="24" rx="4" fill="#0c0909" stroke="#ff4d1a"/><text y="52" text-anchor="middle">Treinamentos</text></g></a></g></g>
+        </g>
+        <g transform="translate(260 260)">
+          <circle r="52" fill="#0c0909" stroke="url(#ring)" stroke-width="1.5"/>
+          <g class="pulse"><svg x="-34" y="-31" width="68" height="62" viewBox="12 12 236 220"><image href="assets/logo.png" width="928" height="240"/></svg></g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <a href="#numeros" class="scroll-hint" aria-label="Rolar"><span></span></a>
+</section>
+
+<!-- NÚMEROS -->
+<section class="stats" id="numeros">
+  <div class="wrap stats-grid">
+    <a class="stat stat-link reveal" href="https://www.google.com/maps?cid=8063675603745116731" target="_blank" rel="noopener"><b><span class="count" data-to="5" data-dec="1">0</span> ★</b><span>61 avaliações no Google</span></a>
+    <div class="stat reveal"><b>+<span class="count" data-to="2500">0</span></b><span>alunos formados</span></div>
+    <div class="stat reveal"><b>+<span class="count" data-to="120">0</span></b><span>empresas clientes</span></div>
+    <div class="stat reveal"><b>Presencial</b><span>Manaus, Boa Vista e Belém</span></div>
+    <div class="stat reveal"><b>Online</b><span>todo o território nacional</span></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>Engenharia</span><span>Inteligência Artificial</span><span>Lean &amp; Melhoria Contínua</span><span>Segurança do Trabalho</span><span>Power BI &amp; Python</span><span>Liderança</span><span>NRs</span><span>Infraestrutura de TI</span>
+    <span>Engenharia</span><span>Inteligência Artificial</span><span>Lean &amp; Melhoria Contínua</span><span>Segurança do Trabalho</span><span>Power BI &amp; Python</span><span>Liderança</span><span>NRs</span><span>Infraestrutura de TI</span>
+  </div>
+</div>
+
+<!-- SOLUÇÕES -->
+<section class="sec" id="servicos">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> O que fazemos</span>
+      <h2>Soluções para cada desafio da sua operação</h2>
+      <p>Da engenharia à inteligência artificial, atuamos nas áreas que sustentam a produtividade, a segurança e a competitividade da sua empresa. Seis frentes, uma metodologia e uma equipe que põe a mão na massa junto com a sua.</p>
+    </header>
+
+    <div class="bento">
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-eng"/></svg>
+        <h3>Engenharia e Projetos</h3>
+        <p>Projetos arquitetônicos, de climatização e elétricos, além de modelagem 2D e design de interiores em 3D.</p>
+        <ul><li>Projetos integrados: áreas administrativas, produção e refeitórios</li><li>Climatização e projetos elétricos</li><li>Modelagem 2D e design 3D</li></ul>
+      </article>
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-ai"/></svg>
+        <h3>Inovação e Inteligência Artificial</h3>
+        <p>Consultoria, implementação e capacitação em IA Generativa para a engenharia e as rotinas corporativas.</p>
+        <ul><li>Implementação corporativa de IA</li><li>Treinamentos e palestras: Engenharia, TI, SST, RH, Compras e Advocacia</li></ul>
+      </article>
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-flow"/></svg>
+        <h3>Gestão de Processos e Melhoria Contínua</h3>
+        <p>Mapeamento de processos, matriz de responsabilidade, planos de ação e suporte comercial para expansão.</p>
+        <ul><li>Mapeamento setorial e administrativo</li><li>Estratégias de comercialização e prospecção</li></ul>
+      </article>
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-shield"/></svg>
+        <h3>Segurança do Trabalho e NRs</h3>
+        <p>NR-1 (GRO/PGR), análise de risco e responsabilidade técnica NR-12, e treinamentos de NR-5 e NR-23.</p>
+        <ul><li>NR-1: gestão completa de riscos ocupacionais</li><li>NR-12: análise de risco e validação de laudos</li><li>NR-5 (CIPA) e NR-23 (Brigada)</li></ul>
+      </article>
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-cap"/></svg>
+        <h3>Capacitações Industriais e Empreendedoras</h3>
+        <p>Treinamento Básico Operacional (TBO), Metrologia Básica, Marketing Digital na prática e formação de empreendedores.</p>
+        <ul><li>Indústria: TBO e Metrologia</li><li>Marketing e comercialização</li></ul>
+      </article>
+      <article class="card spot reveal">
+        <svg class="ic-lg"><use href="#i-data"/></svg>
+        <h3>TI, Análise de Dados e BI</h3>
+        <p>Dashboards em Power BI e Python, bancos de dados, servidores, infraestrutura de redes e CFTV.</p>
+        <ul><li>Servidores, backups, redes e CFTV</li><li>Dashboards estratégicos com Power BI e Python</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO / GESTÃO CONTÍNUA -->
+<section class="sec alt">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Consultoria</span>
+      <h2>Do diagnóstico ao acompanhamento contínuo</h2>
+      <p>Entenda onde a sua operação perde tempo e dinheiro e conte com a Rockstar para manter a melhoria em andamento.</p>
+    </header>
+    <div class="duo">
+      <article class="card big spot reveal">
+        <span class="tag">Porta de entrada</span>
+        <h3>Diagnóstico Rockstar</h3>
+        <p>A porta de entrada para qualquer projeto.</p>
+        <ul class="ticks">
+          <li>Levantamento da operação, dos processos e dos indicadores</li>
+          <li>Identificação das causas dos problemas e das oportunidades de ganho</li>
+          <li>Plano de ação priorizado, com escopo, prazo e investimento definidos</li>
+        </ul>
+      </article>
+      <article class="card big spot reveal">
+        <span class="tag">Mensal</span>
+        <h3>Rockstar Gestão Contínua</h3>
+        <p>Acompanhamento mensal da gestão, dos processos e dos indicadores.</p>
+        <ul class="ticks">
+          <li>Reuniões periódicas com a sua liderança</li>
+          <li>Painel de indicadores e relatório gerencial mensal</li>
+          <li>Plano de ação revisado a cada ciclo, com apoio técnico da equipe</li>
+        </ul>
+      </article>
+    </div>
+    <div class="mini-grid">
+      <div class="mini reveal"><h4>Lean e Melhoria Contínua</h4><p>Lean, Kaizen, 5S, TPM e cronoanálise. Menos desperdício, mais produtividade.</p></div>
+      <div class="mini reveal"><h4>Gestão de Projetos e PMO</h4><p>PMO enxuto, cronograma, entregas e metodologias ágeis como Scrum.</p></div>
+      <div class="mini reveal"><h4>Soluções Corporativas</h4><p>Sistemas, automações com IA e dashboards gerenciais sob medida.</p></div>
+      <div class="mini reveal"><h4>Liderança e Equipes</h4><p>Liderança, comunicação e gestão, in company ou em turmas abertas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGIA -->
+<section class="sec" id="metodologia">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Como trabalhamos</span>
+      <h2>A Metodologia Rockstar</h2>
+      <p>Cada projeto segue quatro etapas, do entendimento das necessidades à medição dos impactos.</p>
+    </header>
+    <div class="steps" id="steps">
+      <svg class="steps-line" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="4" x2="1000" y2="4" stroke="url(#g)" stroke-width="2" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"/></svg>
+      <div class="step reveal"><i>01</i><h4>Diagnóstico inicial</h4><p>Análise profunda de necessidades.</p></div>
+      <div class="step reveal"><i>02</i><h4>Planejamento estratégico</h4><p>Definição de metas detalhadas.</p></div>
+      <div class="step reveal"><i>03</i><h4>Implementação</h4><p>Execução com acompanhamento rigoroso.</p></div>
+      <div class="step reveal"><i>04</i><h4>Avaliação</h4><p>Medição de impactos e sustentabilidade da mudança.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TREINAMENTOS ESTRATÉGICOS + FOTOS -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Na prática</span>
+      <h2>Treinamentos Estratégicos para Potencializar <span class="grad">Resultados de Alta Performance</span></h2>
+      <p>Na Rockstar Consultoria, nossa missão é impulsionar o desenvolvimento humano e organizacional, promovendo inovação e excelência para transformar desafios em oportunidades de crescimento.</p>
+    </header>
+    <div class="gallery">
+      <figure class="g g1 reveal"><img src="assets/treino-1.jpg" alt="Turma em treinamento Rockstar" loading="lazy" width="1024" height="768"></figure>
+      <figure class="g reveal"><img src="assets/treino-2.jpg" alt="Participantes em treinamento" loading="lazy" width="1024" height="576"></figure>
+      <figure class="g g3 reveal"><img src="assets/treino-3.jpg" alt="Atividade prática em treinamento" loading="lazy" width="576" height="1024"></figure>
+      <figure class="g reveal"><img src="assets/treino-4.jpg" alt="Turma reunida durante o curso" loading="lazy" width="1024" height="576"></figure>
+      <figure class="g reveal"><img src="assets/treino-5.jpg" alt="Treinamento com instrutor" loading="lazy" width="1024" height="576"></figure>
+      <figure class="g reveal"><img src="assets/treino-6.jpg" alt="Instrutor conduzindo capacitação" loading="lazy" width="1024" height="576"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE ROCKSTAR -->
+<section class="sec alt" id="diferenciais">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Diferenciais</span>
+      <h2>Por que treinar com a Rockstar?</h2>
+    </header>
+    <div class="why">
+      <div class="why-i reveal"><b>01</b><h4>Mão na massa</h4><p>Cursos práticos, com exercícios e casos reais para aplicar no dia a dia da sua empresa.</p></div>
+      <div class="why-i reveal"><b>02</b><h4>Instrutores do mercado</h4><p>Quem ensina atua no mercado e traz a experiência prática para a sala de aula.</p></div>
+      <div class="why-i reveal"><b>03</b><h4>Presencial e online</h4><p>Turmas presenciais em Manaus, Boa Vista e Belém, e treinamentos online para todo o Brasil.</p></div>
+      <div class="why-i reveal"><b>04</b><h4>Sob medida</h4><p>Soluções personalizadas, com conteúdos focados na realidade do seu negócio.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPACITAÇÕES -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Catálogo</span>
+      <h2>Algumas de nossas capacitações</h2>
+      <p>Treinamentos práticos, com a carga horária de cada curso. Veja as turmas abertas ou solicite um treinamento para a sua equipe.</p>
+    </header>
+    <div class="tabs reveal" role="tablist" id="tabs"></div>
+    <div class="tab-panel reveal" id="tabPanel" role="tabpanel" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS TREINAMENTOS -->
+<section class="sec alt" id="treinamentos">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Turmas abertas</span>
+      <h2>Próximos Treinamentos Rockstar</h2>
+      <p>Confira as turmas abertas, escolha o seu treinamento e faça a inscrição online. Depois da inscrição, um consultor entra em contato.</p>
+    </header>
+    <div class="courses" id="courses"></div>
+    <div class="cta-strip reveal">
+      <p>Quer um treinamento para a sua equipe? Montamos conteúdos sob medida para a realidade da sua empresa.</p>
+      <a href="#contato" class="btn">Solicitar para minha equipe <svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIÊNCIA -->
+<section class="sec" id="cases">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Cases</span>
+      <h2>Nossa experiência na prática</h2>
+      <p>Alguns dos tipos de projeto que já realizamos para indústrias, empresas e instituições públicas e privadas.</p>
+    </header>
+    <div class="trio">
+      <article class="card spot reveal"><h3>Engenharia e Indústria</h3><ul class="ticks">
+        <li>Projetos arquitetônicos, de climatização e elétricos para ambientes corporativos e industriais</li>
+        <li>Treinamentos normativos em NR-23 e NR-5</li>
+        <li>Cronoanálise e melhoria contínua: estudos de tempos e movimentos</li>
+        <li>Análise de risco e responsabilidade técnica NR-12</li></ul></article>
+      <article class="card spot reveal"><h3>Dados e Inovação (IA)</h3><ul class="ticks">
+        <li>IA Generativa para Engenharia e Power BI para Planejamento</li>
+        <li>Dashboards em Python e análise de dados</li>
+        <li>Capacitação corporativa em IA Generativa</li>
+        <li>Business Intelligence e consultoria em banco de dados</li></ul></article>
+      <article class="card spot reveal"><h3>Setor Público e Projetos</h3><ul class="ticks">
+        <li>Diagnóstico organizacional e comercialização para a agricultura familiar</li>
+        <li>Capacitação de empreendedores amazônicos, TBO e Metrologia</li>
+        <li>Mapeamento de processos, matriz de responsabilidade e plano de ação</li>
+        <li>Suporte na prospecção de editais de inovação e fomento</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="sec alt">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Depoimentos</span>
+      <h2>O que dizem os participantes</h2>
+      <p>Relatos reais de quem já participou dos treinamentos da Rockstar.</p>
+    </header>
+    <div class="slider reveal" id="slider">
+      <div class="slides" id="slides"></div>
+      <div class="slider-ctrl">
+        <button id="prev" aria-label="Anterior"><svg class="ic" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg></button>
+        <div class="dots" id="dots"></div>
+        <button id="next" aria-label="Próximo"><svg class="ic"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMINHOS -->
+<section class="sec">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <h2>Por onde você quer começar?</h2>
+      <p>Escolha o caminho que combina com o seu momento.</p>
+    </header>
+    <div class="trio paths">
+      <a href="#treinamentos" class="card path spot reveal"><h3>Quero fazer um treinamento</h3><p>Veja as turmas abertas, com data, carga horária, local e instrutor, e inscreva-se online.</p><span class="more">Ver turmas <svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <a href="#contato" class="card path spot reveal"><h3>Quero treinar a minha equipe</h3><p>Montamos treinamentos sob medida, com conteúdos práticos e focados na realidade do seu negócio.</p><span class="more">Solicitar <svg class="ic"><use href="#i-arrow"/></svg></span></a>
+      <a href="#contato" class="card path spot reveal"><h3>Preciso de consultoria ou projeto</h3><p>Engenharia, processos, NRs, dados e IA: conte o desafio da sua operação e receba uma proposta sob medida.</p><span class="more">Pedir proposta <svg class="ic"><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sec alt" id="sobre">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Manaus · Região Norte · Brasil</span>
+      <h2>Processos em Performance, com gente que faz acontecer</h2>
+      <p>Conheça quem está por trás da Rockstar: direção, equipe e consultores parceiros unidos por um objetivo — transformar conhecimento em resultado para a sua empresa.</p>
+    </header>
+    <div class="about">
+      <div class="about-text reveal">
+        <h3>Quem somos e nosso propósito</h3>
+        <p>A Rockstar é uma empresa dedicada a impulsionar o crescimento e a competitividade das organizações por meio de soluções corporativas inovadoras. Atuamos desde 2024 em consultoria, treinamentos e desenvolvimento de projetos, unindo conhecimento técnico, experiência prática e foco em resultados para apoiar empresas na melhoria de processos, desenvolvimento de pessoas, adequação normativa e aumento da eficiência operacional.</p>
+        <p>Nosso compromisso é entregar valor por meio de soluções personalizadas, contribuindo para negócios mais produtivos, seguros e preparados para os desafios do futuro.</p>
+      </div>
+      <div class="mvv">
+        <div class="card spot reveal"><h4>Missão</h4><p>Proporcionar soluções estratégicas que potencializem o desempenho de processos e talentos.</p></div>
+        <div class="card spot reveal"><h4>Visão</h4><p>Ser referência em soluções, formando profissionais e empresas de alta performance.</p></div>
+        <div class="card spot reveal"><h4>Valores</h4><div class="vals"><span>Foco em Resultados</span><span>Inovação Aplicada</span><span>Excelência Operacional</span><span>Desenvolvimento de Talentos</span><span>Parceria Estratégica</span></div></div>
+      </div>
+    </div>
+
+    <h3 class="sub reveal">Nossa Equipe</h3>
+    <p class="sub-p reveal">Gestão e comercial da Rockstar, apoiados por consultores parceiros organizados por área de atuação.</p>
+    <div class="team" id="team"></div>
+  </div>
+</section>
+
+<!-- RECURSOS -->
+<section class="sec" id="recursos">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Gratuito · Cadastro rápido</span>
+      <h2>Materiais exclusivos</h2>
+      <p>Guias e manuais práticos da Rockstar para você aplicar na sua empresa. Faça um cadastro rápido e receba o acesso.</p>
+    </header>
+    <div class="duo">
+      <article class="card big spot reveal">
+        <svg class="ic-lg"><use href="#i-download"/></svg>
+        <h3>Guia: como criar um agente de IA no WhatsApp</h3>
+        <p>Passo a passo completo, do zero ao agente no ar: 9 etapas, prompts prontos, checklist de testes e boas práticas de segurança e LGPD.</p>
+        <a class="btn btn-sm" href="#contato" data-subject="Material: Guia de agente de IA no WhatsApp">Quero receber</a>
+      </article>
+      <article class="card big spot reveal">
+        <svg class="ic-lg"><use href="#i-download"/></svg>
+        <h3>Pacote de 5 prompts de análise e diagnóstico</h3>
+        <p>Cinco prompts prontos para usar com IA: análise de Instagram, diagnóstico de processo, ata de reunião em plano de ação, olhar crítico para planilha ou painel e roteiro de feedback.</p>
+        <a class="btn btn-sm" href="#contato" data-subject="Material: Pacote de 5 prompts">Quero receber</a>
+      </article>
+    </div>
+
+    <header class="sec-head reveal" style="margin-top:80px">
+      <h2>Perguntas frequentes</h2>
+      <p>Respostas diretas sobre os serviços, os treinamentos e a forma de trabalho da Rockstar.</p>
+    </header>
+    <div class="faq reveal" id="faq"></div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="sec alt contact" id="contato">
+  <div class="wrap">
+    <header class="sec-head reveal">
+      <span class="pill"><i class="dot"></i> Contato</span>
+      <h2>Vamos conversar sobre o desafio da sua empresa?</h2>
+      <p>Conte o que você precisa e a nossa equipe retorna com uma proposta sob medida.</p>
+    </header>
+    <div class="contact-grid">
+      <form class="card form reveal" id="form" novalidate>
+        <label>Nome<input name="nome" required autocomplete="name" placeholder="Seu nome"></label>
+        <div class="row">
+          <label>E-mail<input name="email" type="email" required autocomplete="email" placeholder="voce@empresa.com"></label>
+          <label>WhatsApp<input name="whats" type="tel" autocomplete="tel" placeholder="(92) 90000-0000"></label>
+        </div>
+        <label>Empresa<input name="empresa" autocomplete="organization" placeholder="Nome da empresa"></label>
+        <label>Mensagem<textarea name="msg" rows="4" required placeholder="Conte o desafio da sua operação"></textarea></label>
+        <label class="check"><input type="checkbox" required> Concordo com a <a href="#privacidade" data-open="privacy">Política de Privacidade</a>.</label>
+        <button class="btn" type="submit">Enviar <svg class="ic"><use href="#i-arrow"/></svg></button>
+        <p class="form-msg" id="formMsg" role="status"></p>
+      </form>
+
+      <div class="info reveal">
+        <h3>Fale com a Rockstar</h3>
+        <a class="info-i" href="https://wa.me/5592992637236" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg><span><b>WhatsApp</b>+55 92 99263-7236</span></a>
+        <a class="info-i" href="mailto:rockstar@rockstarbr.com"><svg class="ic"><use href="#i-mail"/></svg><span><b>E-mail</b>rockstar@rockstarbr.com</span></a>
+        <div class="info-i"><svg class="ic"><use href="#i-pin"/></svg><span><b>Endereço</b>Parque 10, 1003, Sala 101, Rua do Comércio — Manaus – Amazonas</span></div>
+
+        <h3 style="margin-top:32px">Onde atendemos</h3>
+        <div class="map">
+          <iframe title="Mapa: Rua do Comércio, Manaus – AM" src="https://www.google.com/maps?q=Rua+do+Comercio,+Manaus+-+AM,+Brasil&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <ul class="ticks">
+          <li><b>Presencial:</b> Manaus, Boa Vista e Belém</li>
+          <li><b>Online:</b> todo o Brasil</li>
+          <li><b>Região Norte:</b> projetos e consultorias sob consulta</li>
+        </ul>
+        <p class="muted">Para combinar horário de atendimento ou uma visita, chame a gente no WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#inicio" class="logo"><img src="assets/logo.png" alt="Rockstar Consultoria, Treinamentos e Soluções" width="928" height="240"></a>
+        <p>Consultoria, treinamentos e soluções para empresas de alta performance. Menos teoria. Mais resultado.</p>
+      </div>
+      <nav class="foot-col" aria-label="Rodapé">
+        <h5>Navegação</h5>
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#treinamentos">Próximos Treinamentos</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+        <a href="#privacidade" data-open="privacy">Política de Privacidade</a>
+      </nav>
+      <div class="foot-col">
+        <h5>Contato</h5>
+        <a href="https://wa.me/5592992637236" target="_blank" rel="noopener">+55 92 99263-7236</a>
+        <a href="mailto:rockstar@rockstarbr.com">rockstar@rockstarbr.com</a>
+        <span>Parque 10, 1003, Sala 101, Rua do Comércio, Manaus – AM</span>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="social">
+        <a href="#" aria-label="Instagram" class="ig"><svg viewBox="0 0 24 24" class="ic"><rect x="3.500" y="3.500" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.200" cy="6.800" r="1.200" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn" class="in"><svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M4 3a2 2 0 100 4 2 2 0 000-4zM2.500 9h3v12h-3zM9 9h2.900v1.700C12.500 9.600 13.800 8.800 15.500 8.800c3.200 0 4 2.100 4 5V21h-3v-6.500c0-1.500-.1-3.200-2-3.200s-2.400 1.400-2.400 3.100V21H9z"/></svg></a>
+        <a href="#" aria-label="Facebook" class="fb"><svg viewBox="0 0 24 24" class="ic"><path fill="currentColor" d="M13.500 21v-8h2.700l.5-3.200h-3.200V7.900c0-.9.400-1.700 1.800-1.700h1.500V3.400S15.500 3.200 14.300 3.200c-2.600 0-4.100 1.500-4.100 4.200v2.400H7.500V13h2.700v8z"/></svg></a>
+        <a href="https://wa.me/5592992637236" target="_blank" rel="noopener" aria-label="WhatsApp" class="wa"><svg class="ic"><use href="#i-wa"/></svg></a>
+      </div>
+      <p>© <span id="year"></span> Rockstar Consultoria, Treinamentos e Soluções. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5592992637236" class="fab" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+
+<dialog id="capDlg" class="modal cap-modal">
+  <div class="modal-in">
+    <button class="modal-x" data-close aria-label="Fechar">✕</button>
+    <span class="tag" id="capCat"></span>
+    <h2 id="capTitle"></h2>
+    <p class="cap-h"><svg class="ic"><use href="#i-clock"/></svg> <span id="capHours"></span></p>
+    <p id="capDesc"></p>
+    <div class="cap-act" id="capAct"></div>
+  </div>
+</dialog>
+
+<!-- MODAL: Privacidade -->
+<dialog id="privacy" class="modal">
+  <div class="modal-in">
+    <button class="modal-x" data-close aria-label="Fechar">✕</button>
+    <h2>Política de Privacidade</h2>
+    <p id="privNote" class="muted" hidden></p>
+    <p class="muted">Última atualização: 05 de novembro de 2026.</p>
+    <p>Esta política explica como a Rockstar Consultoria, Treinamentos e Soluções trata os dados pessoais de quem visita o site rockstarbr.com, entra em contato, se inscreve em treinamentos ou solicita materiais, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018, LGPD).</p>
+    <h4>1. Quem é o controlador</h4>
+    <p>Eric da Silva Costa Ltda, nome fantasia Rockstar Consultoria e Treinamento, CNPJ 59.635.983/0001-85, com sede em Manaus – AM. Contato para assuntos de privacidade: rockstar@rockstarbr.com.</p>
+    <h4>2. Quais dados coletamos</h4>
+    <ul><li>Dados que você informa: nome, e-mail, WhatsApp, empresa e a mensagem ou solicitação enviada nos formulários.</li><li>Dados de navegação: endereço IP, navegador, páginas visitadas e origem do acesso, coletados por ferramentas de estatística e cookies.</li><li>Comentários: quando habilitados, os dados do formulário, além de IP e navegador, usados para detectar spam.</li></ul>
+    <h4>3. Para que usamos os dados</h4>
+    <ul><li>Responder a contatos e solicitações de proposta ou de treinamento.</li><li>Realizar e acompanhar inscrições em turmas e emitir certificados.</li><li>Enviar o material solicitado e, quando você aceitar, comunicações da Rockstar.</li><li>Melhorar o site, medir audiência e manter a segurança.</li><li>Cumprir obrigações legais e regulatórias.</li></ul>
+    <h4>4. Base legal</h4>
+    <p>Tratamos os dados com base no seu consentimento, na execução de contrato ou de procedimentos preliminares a pedido seu, no cumprimento de obrigação legal e no legítimo interesse da Rockstar, sempre respeitando seus direitos.</p>
+    <h4>5. Com quem compartilhamos</h4>
+    <p>Não vendemos dados pessoais. Podemos compartilhá-los com fornecedores que nos ajudam a operar (hospedagem, CRM, e-mails, formulários e estatísticas), com instrutores e parceiros envolvidos na sua turma ou projeto, apenas no necessário, e com autoridades quando houver obrigação legal. Alguns fornecedores podem armazenar dados fora do Brasil, com salvaguardas previstas na LGPD.</p>
+    <h4>6. Por quanto tempo guardamos</h4>
+    <p>Pelo tempo necessário para cumprir as finalidades acima e as obrigações legais. Depois disso, os dados são excluídos ou anonimizados.</p>
+    <h4>7. Seus direitos</h4>
+    <p>Você pode solicitar confirmação do tratamento, acesso, correção, anonimização, portabilidade, eliminação dos dados tratados com consentimento, informações sobre compartilhamento e a revogação do consentimento a qualquer momento, escrevendo para rockstar@rockstarbr.com. Você também pode recorrer à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+    <h4>8. Cookies</h4>
+    <p>O site pode usar cookies para funcionamento, estatísticas e segurança. Você pode bloqueá-los ou apagá-los nas configurações do navegador; algumas funções podem deixar de funcionar.</p>
+    <h4>9. Segurança</h4>
+    <p>Adotamos medidas técnicas e organizacionais razoáveis para proteger os dados contra acesso não autorizado, perda e uso indevido.</p>
+    <h4>10. Alterações</h4>
+    <p>Podemos atualizar esta política. A data da última atualização fica no topo desta página.</p>
+  </div>
+</dialog>
+
+<script src="cursos-data.js"></script>
+<script src="script.js"></script>
+<script src="i18n-cursos.js"></script>
+<script src="i18n.js"></script>
+</body>
+</html>
