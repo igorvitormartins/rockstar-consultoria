@@ -433,10 +433,8 @@
 
   let start = 'pt';
   try { start = localStorage.getItem('rs-lang'); } catch (e) {}
-  if (!start) {
-    const nav = (navigator.language || 'pt').slice(0, 2).toLowerCase();
-    start = LANGS.includes(nav) ? nav : 'en';
-  }
+  // Padrão é sempre português; só muda se o visitante escolheu outro idioma nos botões.
+  if (!start || !LANGS.includes(start)) start = 'pt';
   window.RS_LANG = 'pt';
   setLang(start, false);
 })();
