@@ -536,3 +536,19 @@ button.item:hover .it-r .ic,button.item:focus-visible .it-r .ic{opacity:1;transf
 .cap-h .ic{width:18px;height:18px}
 .cap-act{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .cap-act .btn{justify-content:center}
+
+/* ===== MOBILE / TABLET (sobrescreve regras de desktop acima) ===== */
+@media (max-width:1000px){
+  .hero{min-height:auto;padding:96px 0 56px}
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:20px;text-align:center}
+  .hero-in>*{min-width:0}
+  .hero-art{order:-1;max-height:none;max-width:300px;margin:0 auto}
+  .orbit{width:min(300px,100%)}
+  .hero h1{font-size:clamp(1.9rem,8.4vw,3rem)!important;overflow-wrap:break-word}
+  .hero-cta,.chips,.badges{justify-content:center}
+}
+@media (max-width:420px){
+  .hero h1{font-size:clamp(1.7rem,8.6vw,2.2rem)!important}
+  .hero-cta .btn{width:100%;justify-content:center}
+}
+html,body{max-width:100%;overflow-x:hidden}
